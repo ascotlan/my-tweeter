@@ -1,0 +1,37 @@
+/******************************/
+/* NAVIGATION */
+/******************************/
+
+.main-nav {
+  background-color: #4056a1;
+  height: 120px;
+  width: 100vw;
+  padding: 0 1.5em;
+  color: #ffffff;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: "Bungee", cursive;
+  font-size: 44px;
+}
+
+.nav-action {
+  font-size: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.nav-action span {
+  font-weight: bold;
+}
+
+.nav-action .fa-solid {
+  color: red;
+}
