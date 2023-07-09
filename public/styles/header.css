@@ -2,7 +2,7 @@
   height: 400px;
   width: 100%;
   padding: 290px 0 160px;
-  background-color: #cf711f;
+  background-color: #a18b40;
   background-image: url("../images/45-degree-fabric-light.png");
 
   display: flex;
@@ -10,4 +10,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.5em;
+}
+
+.username {
+  color: #22211f;
 }
