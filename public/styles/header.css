@@ -1,4 +1,4 @@
-.header {
+header.header {
   height: 400px;
   width: 100%;
   padding: 290px 0 160px;
@@ -12,6 +12,6 @@
   gap: 0.5em;
 }
 
-.username {
+header.header .username {
   color: #22211f;
 }

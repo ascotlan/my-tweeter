@@ -2,10 +2,10 @@
 /* NAVIGATION */
 /******************************/
 
-.main-nav {
+nav.main-nav {
   background-color: #4056a1;
   height: 120px;
-  width: 100vw;
+  width: 100%;
   padding: 0 1.5em;
   color: #ffffff;
   position: fixed;
@@ -15,12 +15,12 @@
   align-items: center;
 }
 
-.logo {
+nav.main-nav .logo {
   font-family: "Bungee", cursive;
   font-size: 44px;
 }
 
-.nav-action {
+nav.main-nav .nav-action {
   font-size: 20px;
   letter-spacing: 0.7px;
   display: flex;
@@ -29,10 +29,15 @@
   gap: 0.5em;
 }
 
-.nav-action span {
+nav.main-nav span {
   font-weight: bold;
 }
 
-.nav-action .fa-solid {
+nav.main-nav .fa-solid {
   color: red;
+  transition: all 0.8s;
+}
+
+nav.main-nav .fa-solid:hover {
+  transform: translateY(8px);
 }

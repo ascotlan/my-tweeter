@@ -13,15 +13,15 @@ html {
   box-sizing: inherit;
 }
 
+/*
+ * Global layout stuff
+ */
+
 * {
   /* my edit - make margin and padding univerally 0  */
   margin: 0;
   padding: 0;
 }
-
-/*
- * Global layout stuff
- */
 
 body {
   font-family: "Source Sans 3", sans-serif;
@@ -31,11 +31,15 @@ body {
   font-weight: 300;
 }
 
-.container {
+#container {
   max-width: 90%;
   margin: 0 auto;
   padding: 1.5em 8em;
   font-weight: 600;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 24px;
 }
 
 /*
@@ -51,13 +55,12 @@ semi-bold:600
 
 - Line heights:
 Default: 1
-small: 1.05
-medium: 1.15, 1.2
+small: 
+medium: 
 paragraph default: 1.6
-Large: 1.8
+Large: 
 
 - Letter spacing:
--0.5px
 0.7px
 
 --- 02 COLORS
@@ -66,14 +69,14 @@ MAIN COLOR: #4056a1,  #f4f1ec
 TINTS: 
 SHADES: 
 ACCENTS: #a18b40;
-GREY COLOR:  #545149 #22211f;
+GREY COLOR:  #545149 #22211f, #c6cce3;
 
 -- 05 SHADOWS
- 0 2.4em 4.8em rgba(34, 33, 31, 0.08);
+box-shadow: 0.8em 0.8em 0.8em rgba(34, 33, 31, 0.34);
 
 -- 06 BORDER-RADIUS
-Default: 9px
-Medium: 11px;
+Default: 
+Medium: 
 
 -- 07 WHITESPACE
 

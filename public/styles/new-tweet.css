@@ -1,18 +1,17 @@
-.new-tweet {
-  box-shadow: 0 2.4em 4.8em rgba(34, 33, 31, 0.08);
-  padding: 32px;
-  border-radius: 9px;
+section.new-tweet {
+  padding: 32px 16px;
 }
 
-.new-tweet form {
+section.new-tweet form {
   display: grid;
   grid-template-rows: min-content 1fr 1fr;
   row-gap: 16px;
   align-items: center;
 }
 
-.new-tweet label {
+section.new-tweet label {
   font-size: 20px;
+  font-weight: 600;
 }
 
 #tweet-text {
@@ -31,25 +30,102 @@
   outline: 1px dotted #22211f;
 }
 
-.new-tweet button,
-.new-tweet output {
+section.new-tweet button,
+section.new-tweet output {
   font-family: "Bungee", cursive;
   font-size: 18px;
 }
-.new-tweet button {
+section.new-tweet button {
   justify-self: start;
   color: #fff;
   background-color: #4056a1;
   padding: 4px 12px;
   cursor: pointer;
+  transition: all 0.4s;
 }
 
-.new-tweet button:hover {
+section.new-tweet button:hover {
   background-color: #545149;
 }
 
-.new-tweet output {
+section.new-tweet output {
   justify-self: end;
   padding-right: 8px;
   letter-spacing: 0.7px;
+}
+
+section.new-tweet-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 32px;
+}
+
+section.new-tweet-container article {
+  border: 3px solid #22211f;
+  margin: 0 16px;
+  padding: 16px 0;
+  font-size: 18px;
+  transition: all 0.4s;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 24px;
+  align-items: center;
+}
+
+section.new-tweet-container article:hover {
+  box-shadow: 0.8em 0.8em 0.8em rgba(34, 33, 31, 0.34);
+}
+
+article.tweet header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 300;
+  padding: 0 16px 12px;
+}
+
+article.tweet .tag {
+  color: #c6cce3;
+  font-weight: 600;
+}
+
+article.tweet .text {
+  padding: 0 16px;
+}
+
+article.tweet footer::before {
+  content: "";
+  display: block;
+  padding: 0;
+  margin: 0 8px;
+  border-top: 3px solid #22211f;
+}
+
+article.tweet .footer-items {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+}
+
+article.tweet .tweet-age,
+article.tweet .icons {
+  font-size: 14px;
+}
+
+article.tweet .icons {
+  color: #4056a1;
+  display: flex;
+  gap: 8px;
+}
+
+article.tweet .fa-flag,
+article.tweet .fa-retweet,
+article.tweet .fa-heart {
+  transition: all 0.4s;
+}
+
+article.tweet .fa-flag:hover,
+article.tweet .fa-retweet:hover,
+article.tweet .fa-heart:hover {
+  color: #a18b40;
 }
