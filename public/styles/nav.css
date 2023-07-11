@@ -18,6 +18,9 @@ nav.main-nav {
 nav.main-nav .logo {
   font-family: "Bungee", cursive;
   font-size: 44px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #ffffff;
 }
 
 nav.main-nav .nav-action {
@@ -29,13 +32,14 @@ nav.main-nav .nav-action {
   gap: 0.5em;
 }
 
-nav.main-nav span {
-  font-weight: bold;
+nav.main-nav span.text {
+  font-weight: 600;
 }
 
 nav.main-nav .fa-solid {
   color: red;
   transition: all 0.8s;
+  cursor: pointer;
 }
 
 nav.main-nav .fa-solid:hover {
