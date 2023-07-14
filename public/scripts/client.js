@@ -4,41 +4,16 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const data = [
-  {
-    user: {
-      name: "Newton",
-      avatars: "https://i.imgur.com/73hZDYK.png",
-      handle: "@SirIsaac",
-    },
-    content: {
-      text: "If I have seen further it is by standing on the shoulders of giants",
-    },
-    created_at: 1461116232227,
-  },
-  {
-    user: {
-      name: "Descartes",
-      avatars: "https://i.imgur.com/nlhLi3I.png",
-      handle: "@rd",
-    },
-    content: {
-      text: "Je pense , donc je suis",
-    },
-    created_at: 1461113959088,
-  },
-];
-
 // Create tweet HTML structure
 const createTweetElement = function (tweet) {
   //Determine age of tweet
-  function timeStamp(time) {
-    const ageInMs = Math.abs(new Date().getTime() - time);
-    const ageInDays = Math.round(ageInMs / (1000 * 60 * 60 * 24));
+  function timeStamp(timeCreated) {
+    const ageInMs = Math.abs(new Date().getTime() - timeCreated);
+    const ageInSeconds = Math.round(ageInMs / 1000);
+    const ageInMins = Math.round(ageInSeconds / 60);
+    const ageInHours = Math.round(ageInMins / 60);
+    const ageInDays = Math.round(ageInHours / 24);
     const ageInYears = Math.round(ageInDays / 365);
-    const ageInHours = Math.round(ageInDays / (1000 * 60 * 60));
-    const ageInMins = Math.round(ageInDays / (1000 * 60));
-    const ageInSeconds = Math.round(ageInDays / 1000);
 
     if (ageInYears >= 1) {
       return ageInYears === 1
@@ -89,11 +64,42 @@ const createTweetElement = function (tweet) {
 
 // loop through the collection of tweets and render each tweet
 const renderTweets = function (tweets) {
+  $(".new-tweet-container").empty();
   tweets.forEach((tweet) => {
-    $(".new-tweet-container").append(createTweetElement(tweet));
+    $(".new-tweet-container").prepend(createTweetElement(tweet));
   });
 };
 
+// Getdata bases and pass array of tweets to the renderTweets function
+const getDatabase = () => {
+  $.ajax({
+    url: "/tweets/",
+    type: "GET",
+    dataType: "json",
+    success: (data) => {
+      renderTweets(data); //render tweet data from db once the document is loaded
+    },
+    error: (error) => {
+      console.error("Error: ", error);
+    },
+  });
+};
+
+//Make a POST request to the '/tweets/' endpoint to save tweet to db
+const postFormData = () => {
+  const serializedFormData = $("#submit-tweet").serialize();
+  $.post("/tweets/", serializedFormData).then(() => {
+    getDatabase();
+  });
+};
+
+//when document is loaded
 $(document).ready(function () {
-  renderTweets(data); //render tweet data once the document is loaded
+  //Get the database
+  getDatabase();
+  //listen for new tweet submission from form and add to db
+  $("#submit-tweet").on("submit", function (event) {
+    event.preventDefault();
+    postFormData();
+  });
 });
