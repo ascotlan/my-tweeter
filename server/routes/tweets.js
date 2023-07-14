@@ -22,8 +22,6 @@ module.exports = function (DataHelpers) {
       return;
     }
 
-    console.log(req.body);
-
     const user = req.body.user
       ? req.body.user
       : userHelper.generateRandomUser();

@@ -6,36 +6,6 @@
 
 // Create tweet HTML structure
 const createTweetElement = function (tweet) {
-  //Determine age of tweet
-  function timeStamp(timeCreated) {
-    const ageInMs = Math.abs(new Date().getTime() - timeCreated);
-    const ageInSeconds = Math.round(ageInMs / 1000);
-    const ageInMins = Math.round(ageInSeconds / 60);
-    const ageInHours = Math.round(ageInMins / 60);
-    const ageInDays = Math.round(ageInHours / 24);
-    const ageInYears = Math.round(ageInDays / 365);
-
-    if (ageInYears >= 1) {
-      return ageInYears === 1
-        ? `${ageInYears} year ago`
-        : `${ageInYears} years ago`;
-    } else if (ageInDays >= 1) {
-      return ageInDays === 1 ? `${ageInDays} day ago` : `${ageInDays} days ago`;
-    } else if (ageInHours >= 1) {
-      return ageInHours === 1
-        ? `${ageInHours} hour ago`
-        : `${ageInHours} hours ago`;
-    } else if (ageInMins >= 1) {
-      return ageInMins === 1
-        ? `${ageInMins} minute ago`
-        : `${ageInMins} minutes ago`;
-    } else {
-      return ageInSeconds === 1
-        ? `${ageInSeconds} second ago`
-        : `${ageInSeconds} seconds ago`;
-    }
-  }
-
   const $tweet = `<article class="tweet">
     <header>
       <div class="user"> 
@@ -49,7 +19,7 @@ const createTweetElement = function (tweet) {
     </p>
     <footer>
       <div class="footer-items">
-        <span class="tweet-age">${timeStamp(tweet.created_at)}</span>
+        <span class="tweet-age">${timeago.format(tweet.created_at)}</span>
         <div class="icons">
           <i class="fa-solid fa-flag"></i>
           <i class="fa-sharp fa-solid fa-retweet"></i>
@@ -71,7 +41,7 @@ const renderTweets = function (tweets) {
 };
 
 // Getdata bases and pass array of tweets to the renderTweets function
-const getDatabase = () => {
+const loadTweets = () => {
   $.ajax({
     url: "/tweets/",
     type: "GET",
@@ -88,15 +58,19 @@ const getDatabase = () => {
 //Make a POST request to the '/tweets/' endpoint to save tweet to db
 const postFormData = () => {
   const serializedFormData = $("#submit-tweet").serialize();
-  $.post("/tweets/", serializedFormData).then(() => {
-    getDatabase();
-  });
+  $.post("/tweets/", serializedFormData)
+    .then(() => {
+      loadTweets();
+    })
+    .catch((error) => {
+      console.error("Error: ", error);
+    });
 };
 
 //when document is loaded
 $(document).ready(function () {
   //Get the database
-  getDatabase();
+  loadTweets();
   //listen for new tweet submission from form and add to db
   $("#submit-tweet").on("submit", function (event) {
     event.preventDefault();
