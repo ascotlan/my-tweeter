@@ -6,16 +6,23 @@
 
 // Create tweet HTML structure
 const createTweetElement = function (tweet) {
+  //a function to escape some text
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   const $tweet = `<article class="tweet">
     <header>
       <div class="user"> 
         <img src=${tweet.user.avatars} class="avatar">
-        <span class="name">${tweet.user.name}</span>
+        <span class="name">${escape(tweet.user.name)}</span>
       </div>
-      <span class="tag">${tweet.user.handle}</span>
+      <span class="tag">${escape(tweet.user.handle)}</span>
     </header>
     <p>
-      ${tweet.content.text}
+      ${escape(tweet.content.text)}
     </p>
     <footer>
       <div class="footer-items">
@@ -34,10 +41,13 @@ const createTweetElement = function (tweet) {
 
 // loop through the collection of tweets and render each tweet
 const renderTweets = function (tweets) {
-  $(".new-tweet-container").empty();
+  $(".new-tweet-container").empty(); //empty the .new-tweet-container
   tweets.forEach((tweet) => {
+    //refille the .new-tweet-container in chronological order - new to old
     $(".new-tweet-container").prepend(createTweetElement(tweet));
   });
+  // Clear textarea input fields in the form when new tweet renders
+  $("#submit-tweet").find("input[type=text], textarea").val("");
 };
 
 // Getdata bases and pass array of tweets to the renderTweets function
@@ -56,8 +66,7 @@ const loadTweets = () => {
 };
 
 //Make a POST request to the '/tweets/' endpoint to save tweet to db
-const postFormData = () => {
-  const serializedFormData = $("#submit-tweet").serialize();
+const postFormData = (serializedFormData) => {
   $.post("/tweets/", serializedFormData)
     .then(() => {
       loadTweets();
@@ -67,6 +76,23 @@ const postFormData = () => {
     });
 };
 
+const validateFormData = (serializedFormData) => {
+  const tweet = serializedFormData.split("=")[1];
+  const charCount = $("#tweet-text")
+    .parent("form")
+    .find("output.counter")
+    .val();
+  if (tweet === "") {
+    alert("Tweet content is not present");
+    return false;
+  } else if (charCount < 0) {
+    alert("Tweet content is too long");
+    return false;
+  } else {
+    return true;
+  }
+};
+
 //when document is loaded
 $(document).ready(function () {
   //Get the database
@@ -74,6 +100,10 @@ $(document).ready(function () {
   //listen for new tweet submission from form and add to db
   $("#submit-tweet").on("submit", function (event) {
     event.preventDefault();
-    postFormData();
+    //serialize form data for posting to server endpoint
+    const serializedFormData = $(this).serialize();
+    if (validateFormData(serializedFormData)) {
+      postFormData(serializedFormData); //post for data if data entered is valid
+    }
   });
 });
