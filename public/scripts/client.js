@@ -5,6 +5,7 @@
  */
 
 // Create tweet HTML structure
+
 const createTweetElement = function (tweet) {
   //a function to escape some text
   const escape = function (str) {
@@ -46,8 +47,6 @@ const renderTweets = function (tweets) {
     //refille the .new-tweet-container in chronological order - new to old
     $(".new-tweet-container").prepend(createTweetElement(tweet));
   });
-  // Clear textarea input fields in the form when new tweet renders
-  $("#submit-tweet").find("input[type=text], textarea").val("");
 };
 
 // Getdata bases and pass array of tweets to the renderTweets function
@@ -83,10 +82,32 @@ const validateFormData = (serializedFormData) => {
     .find("output.counter")
     .val();
   if (tweet === "") {
-    alert("Tweet content is not present");
+    $("#errorMessage")
+      .slideDown(400)
+      .css({
+        border: "1px solid red",
+        display: "flex",
+        "justify-content": "center",
+        "align-items": "center",
+      })
+      .text("Tweet content is not present")
+      .parent()
+      .css("padding", "0");
+
     return false;
   } else if (charCount < 0) {
-    alert("Tweet content is too long");
+    $("#errorMessage")
+      .slideDown(400)
+      .css({
+        border: "1px solid red",
+        display: "flex",
+        "justify-content": "center",
+        "align-items": "center",
+      })
+      .text("Tweet content limit is 140 characters")
+      .parent()
+      .css("padding", "0");
+
     return false;
   } else {
     return true;
@@ -95,15 +116,34 @@ const validateFormData = (serializedFormData) => {
 
 //when document is loaded
 $(document).ready(function () {
+  //clear textarea on refresh
+  $("#submit-tweet").find("input[type=text], textarea").val("");
+
   //Get the database
   loadTweets();
+
   //listen for new tweet submission from form and add to db
   $("#submit-tweet").on("submit", function (event) {
     event.preventDefault();
+
+    // if error message is showing then slideUp element
+    if ($("#errorMessage").text()) {
+      $("#errorMessage").slideUp(400).parent().css("padding", "16px 0");
+    }
+
     //serialize form data for posting to server endpoint
     const serializedFormData = $(this).serialize();
     if (validateFormData(serializedFormData)) {
-      postFormData(serializedFormData); //post for data if data entered is valid
+      //post for data if data entered is valid
+      postFormData(serializedFormData);
+
+      // Clear textarea input fields in the form when new tweet renders & reset counter value to 140
+      $("#submit-tweet")
+        .find("input[type=text], textarea")
+        .val("")
+        .parent()
+        .find("output.counter")
+        .val("140");
     }
   });
 });
