@@ -90,7 +90,7 @@ const validateFormData = (serializedFormData) => {
         "justify-content": "center",
         "align-items": "center",
       })
-      .text("Tweet content is not present")
+      .text("Tweet content is not present!")
       .parent()
       .css("padding", "0");
 
@@ -104,7 +104,7 @@ const validateFormData = (serializedFormData) => {
         "justify-content": "center",
         "align-items": "center",
       })
-      .text("Tweet content limit is 140 characters")
+      .text("Tweet content limit is 140 characters!")
       .parent()
       .css("padding", "0");
 
