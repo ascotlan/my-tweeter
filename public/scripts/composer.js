@@ -11,6 +11,7 @@ $(document).ready(function () {
       });
   });
 
+  //When screen scolls change CSS classes so that #scroll-top link shows/hides, and hide/show the nav bar
   $(window).scroll(function () {
     let yAxis = $(this).scrollTop();
     if (yAxis > 0) {
@@ -24,6 +25,7 @@ $(document).ready(function () {
     }
   });
 
+  //when the #scroll-top link is clicked scroll top of the page and focus on the tweet textarea
   $("#scroll-top").on("click", function (event) {
     event.preventDefault();
     $("html, body").animate({ scrollTop: "0" }, 400, function () {
