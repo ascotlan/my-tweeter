@@ -47,3 +47,40 @@ nav.main-nav .fa-solid {
 nav.main-nav .fa-solid:hover {
   transform: translateY(4px);
 }
+
+/******************************/
+/* NAVIGATION BACK TO TOP*/
+/******************************/
+.top-page {
+  cursor: pointer;
+  padding: 24px;
+  margin: 0 16px 30px 0;
+  background-color: red;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  transition: all 0.4s;
+}
+
+div.scroll .fa-solid {
+  color: #fff;
+  font-size: 30px;
+}
+
+div.scroll a:link,
+div.scroll a:visited {
+  text-decoration: none;
+}
+
+div.scroll .top-page.show {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+div.scroll .top-page.hide {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
