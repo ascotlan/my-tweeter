@@ -2,35 +2,36 @@
 /* CREATE NEW TWEET SECTION */
 /******************************/
 section.new-tweet {
-  padding: 0px 16px 32px;
+  padding: 0 1.6rem 3.2rem;
   display: grid;
   align-items: center;
   transition: all 0.3s;
   grid-template-columns: 1fr;
-  row-gap: 16px;
+  row-gap: 1.6rem;
+  font-size: 1.6rem;
 }
 
 section.new-tweet #errorMessage {
   color: red;
   background-color: #f4f1ec;
-  height: 32px;
-  padding: 0 16px;
+  height: 3.2rem;
+  padding: 0 1.6rem;
   display: none;
 }
 
 section.new-tweet .errorPadding {
-  padding: 16px;
+  padding: 1.6rem;
 }
 
 section.new-tweet form {
   display: grid;
   grid-template-rows: min-content 1fr 1fr;
-  row-gap: 16px;
+  row-gap: 1.6rem;
   align-items: center;
 }
 
 section.new-tweet label {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 600;
 }
 
@@ -38,7 +39,6 @@ section.new-tweet label {
   grid-column: 1/3;
   resize: none;
   background-color: #f4f1ec;
-  font-size: 16px;
   font-weight: 600;
   border: none;
   outline: none;
@@ -54,13 +54,13 @@ section.new-tweet button,
 section.new-tweet output {
   font-family: "Bungee", cursive;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 section.new-tweet button {
   justify-self: start;
   color: #fff;
   background-color: #4056a1;
-  padding: 4px 12px;
+  padding: 0.4rem 1.2rem;
   cursor: pointer;
   transition: all 0.4s;
 }
@@ -71,14 +71,14 @@ section.new-tweet button:hover {
 
 section.new-tweet output {
   justify-self: end;
-  padding-right: 8px;
+  padding-right: 0.8rem;
   letter-spacing: 0.7px;
 }
 
 section.new-tweet-container {
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 32px;
+  row-gap: 3.2rem;
 }
 
 /******************************/
@@ -87,19 +87,19 @@ section.new-tweet-container {
 
 section.new-tweet-container article {
   border: 3px solid #22211f;
-  margin: 0 16px;
-  padding: 16px 0;
-  font-size: 18px;
+  margin: 0 1.6rem;
+  padding: 1.6rem 0;
+  font-size: 1.8rem;
   transition: all 0.4s;
 
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 24px;
+  row-gap: 2.4rem;
   align-items: center;
 }
 
 section.new-tweet-container article:hover {
-  box-shadow: 0.8em 0.8em 0.8em rgba(34, 33, 31, 0.34);
+  box-shadow: 0.8rem 0.8rem 0.8rem rgba(34, 33, 31, 0.34);
 }
 
 article.tweet header {
@@ -107,17 +107,17 @@ article.tweet header {
   justify-content: space-between;
   align-items: center;
   font-weight: 300;
-  padding: 0 16px 12px;
+  padding: 0 1.6rem 1.2rem;
 }
 
 article.tweet .user {
   display: flex;
-  gap: 8px;
+  gap: 0.8rem;
 }
 
 article.tweet .avatar {
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   align-self: flex-start;
 }
 
@@ -131,7 +131,7 @@ article.tweet .tag {
 }
 
 article.tweet p {
-  padding: 0 16px;
+  padding: 0 1.6rem;
   font-weight: 600;
 }
 
@@ -139,25 +139,25 @@ article.tweet footer::before {
   content: "";
   display: block;
   padding: 0;
-  margin: 0 8px;
+  margin: 0 0.8rem;
   border-top: 3px solid #22211f;
 }
 
 article.tweet .footer-items {
   display: flex;
   justify-content: space-between;
-  padding: 8px 16px;
+  padding: 0.8rem 1.6rem;
 }
 
 article.tweet .tweet-age,
 article.tweet .icons {
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 article.tweet .icons {
   color: #4056a1;
   display: flex;
-  gap: 8px;
+  gap: 0.8rem;
 }
 
 article.tweet .fa-flag,

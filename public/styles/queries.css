@@ -1,0 +1,103 @@
+/*rem and em do NOT depend on html font-size in media queries!
+Instead, 1rem = 1em = 16px */
+
+/******************************/
+/* Above 768px (Tablet & Desktops) */
+/******************************/
+@media (min-width: 48em) {
+  #query-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 15rem 3.2rem 3.2rem;
+    justify-items: end;
+  }
+
+  #container {
+    width: 100%;
+    margin: 0;
+  }
+
+  header.header {
+    margin: 4rem 0 0 1.6rem;
+    padding: 4rem 0;
+    justify-self: start;
+  }
+}
+
+/***************************************/
+/* Between 320px & 768px (Smartphones) */
+/***************************************/
+
+@media (min-width: 20em) and (max-width: 47.99em) {
+  nav.main-nav {
+    background-color: #a18b40;
+    background-image: url("../images/45-degree-fabric-light.png");
+  }
+
+  #query-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  #container {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/********************************/
+/* Above 512px  (Smartphones) */
+/********************************/
+
+@media (min-width: 32em) {
+  nav.main-nav {
+    padding: 0 3.2rem;
+  }
+
+  #container {
+    padding: 3.2rem 0 0;
+  }
+}
+
+/***************************************/
+/* Between 320px & 512px (Smartphones) */
+/***************************************/
+
+@media (min-width: 20em) and (max-width: 31.99em) {
+  nav.main-nav {
+    padding: 0 2.4rem;
+  }
+  nav.main-nav .logo {
+    font-size: 2.4rem;
+  }
+
+  .username h2 {
+    font-size: 2rem;
+  }
+
+  section.new-tweet label {
+    font-size: 1.8rem;
+  }
+
+  #container {
+    padding: 3.2rem 0 0;
+  }
+
+  nav.main-nav .nav-action {
+    font-size: 1.4rem;
+  }
+
+  .top-page {
+    padding: 1.6rem;
+  }
+
+  article.tweet .avatar {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  section.new-tweet-container article {
+    font-size: 1.4rem;
+  }
+}

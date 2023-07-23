@@ -3,17 +3,18 @@
 /******************************/
 
 header.header {
-  height: 400px;
+  height: 40rem;
   width: 100%;
-  padding: 290px 0 160px;
+  padding: 29rem 0 16rem;
   background-color: #a18b40;
   background-image: url("../images/45-degree-fabric-light.png");
+  font-size: 1.8rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5em;
+  gap: 0.5rem;
 }
 
 header.header .username {

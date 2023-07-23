@@ -10,7 +10,10 @@
 
 html {
   box-sizing: border-box;
+  /* font-size: 10px; */
+  font-size: 62.5%; /* 10px / default(16px) */
 }
+
 *,
 *:before,
 *:after {
@@ -38,12 +41,12 @@ body {
 #container {
   max-width: 90%;
   margin: 0 auto;
-  padding: 32px 80px;
+  padding: 3.2rem 8rem;
   font-weight: 600;
 
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 24px;
+  row-gap: 2.4rem;
 }
 
 /*
