@@ -19,14 +19,14 @@ This project implements HTML, CSS, JS, jQuery and AJAX on the front-end, and Nod
 
 ## Screenshots
 
-#### Screenshot of desktop layout
+#### Screenshot of desktop & tablet layout
 
-!["Screenshot of desktop layout"](https://github.com/ascotlan/my-tweeter/blob/master/docs/desktop.png)
+!["Screenshot of desktop & tablet layout"](https://github.com/ascotlan/my-tweeter/blob/master/docs/desktop.png)
 
-#### Screenshot of tablet layout
+#### Screenshot of smartphone layout
 
-!["Screenshot of tablet layout"](https://github.com/ascotlan/my-tweeter/blob/master/docs/tablet.png)
+!["Screenshot of smartphone layout"](https://github.com/ascotlan/my-tweeter/blob/master/docs/smartphone.png)
 
-#### Screenshot in tablet view as user scrolls through the tweets
+#### Screenshot in smartphone view as user scrolls through the tweets
 
-!["Screenshot in tablet view, scrolling through the tweets"](https://github.com/ascotlan/my-tweeter/blob/master/docs/tablet-scroll.png)
+!["Screenshot in smartphone view, scrolling through the tweets"](https://github.com/ascotlan/my-tweeter/blob/master/docs/smartphone-scroll.png)
