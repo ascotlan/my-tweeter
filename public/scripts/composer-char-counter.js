@@ -1,6 +1,6 @@
 //after document is loaded listen on textarea element for input event
-$(document).ready(function () {
-  $("#tweet-text").on("input", function (event) {
+$(document).ready(function() {
+  $("#tweet-text").on("input", function(event) {
     const charLimit = 140; //limit of 140 chars
     let currentLength = $(this).val().trim().length; //length of trimmed input
 
