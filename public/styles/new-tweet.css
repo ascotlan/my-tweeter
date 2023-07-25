@@ -78,6 +78,7 @@ section.new-tweet output {
 section.new-tweet-container {
   display: grid;
   grid-template-columns: 1fr;
+  grid-auto-rows: 1fr; /*ensure all rows are the same height when text wraps */
   row-gap: 3.2rem;
 }
 
@@ -133,6 +134,9 @@ article.tweet .tag {
 article.tweet p {
   padding: 0 1.6rem;
   font-weight: 600;
+  word-wrap: break-word;
+  word-break: break-all;
+  max-width: 100%;
 }
 
 article.tweet footer::before {

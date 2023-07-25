@@ -6,9 +6,9 @@
 
 // Create tweet HTML structure
 
-const createTweetElement = function(tweet) {
+const createTweetElement = function (tweet) {
   //a function to escape some text
-  const escape = function(str) {
+  const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
@@ -41,7 +41,7 @@ const createTweetElement = function(tweet) {
 };
 
 // loop through the collection of tweets and render each tweet
-const renderTweets = function(tweets) {
+const renderTweets = function (tweets) {
   $(".new-tweet-container").empty(); //empty the .new-tweet-container
   tweets.forEach((tweet) => {
     //refille the .new-tweet-container in chronological order - new to old
@@ -75,12 +75,15 @@ const postFormData = (serializedFormData) => {
     });
 };
 
-const validateFormData = (serializedFormData) => {
-  const tweet = serializedFormData.split("=")[1];
+const validateFormData = (formData) => {
+  // trim tweet text of white spaces
+  const tweet = $(formData).find("input[type=text], textarea").val().trim();
+  //Get tweet char count
   const charCount = $("#tweet-text")
     .parent("form")
     .find("output.counter")
     .val();
+
   if (tweet === "") {
     $("#errorMessage")
       .slideDown(400)
@@ -115,7 +118,7 @@ const validateFormData = (serializedFormData) => {
 };
 
 //when document is loaded
-$(document).ready(function() {
+$(document).ready(function () {
   //clear textarea on refresh
   $("#submit-tweet").find("input[type=text], textarea").val("");
 
@@ -123,7 +126,7 @@ $(document).ready(function() {
   loadTweets();
 
   //listen for new tweet submission from form and add to db
-  $("#submit-tweet").on("submit", function(event) {
+  $("#submit-tweet").on("submit", function (event) {
     event.preventDefault();
 
     // if error message is showing then slideUp element
@@ -131,10 +134,11 @@ $(document).ready(function() {
       $("#errorMessage").slideUp(400).parent().css("padding", "16px 0");
     }
 
-    //serialize form data for posting to server endpoint
-    const serializedFormData = $(this).serialize();
-    if (validateFormData(serializedFormData)) {
-      //post for data if data entered is valid
+    if (validateFormData(this)) {
+      //serialize form data for posting to server endpoint
+      const serializedFormData = $(this).serialize();
+
+      //post form data if data entered is valid
       postFormData(serializedFormData);
 
       // Clear textarea input fields in the form when new tweet renders & reset counter value to 140

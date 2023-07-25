@@ -1,8 +1,8 @@
 //after document is loaded listen on textarea element for input event
-$(document).ready(function() {
-  $("#tweet-text").on("input", function(event) {
+$(document).ready(function () {
+  $("#tweet-text").on("input", function (event) {
     const charLimit = 140; //limit of 140 chars
-    let currentLength = $(this).val().length;
+    let currentLength = $(this).val().trim().length; //length of trimmed input
 
     //traverse up the DOM tree to the parent form node then find a child output node with class "counter", then assign the text value of characters left
     $(this)
