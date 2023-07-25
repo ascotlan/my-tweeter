@@ -6,9 +6,9 @@
 
 // Create tweet HTML structure
 
-const createTweetElement = function(tweet) {
+const createTweetElement = function (tweet) {
   //a function to escape some text
-  const escape = function(str) {
+  const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
@@ -18,9 +18,9 @@ const createTweetElement = function(tweet) {
     <header>
       <div class="user"> 
         <img src=${tweet.user.avatars} class="avatar">
-        <span class="name">${escape(tweet.user.name)}</span>
+        <span class="name">${tweet.user.name}</span>
       </div>
-      <span class="tag">${escape(tweet.user.handle)}</span>
+      <span class="tag">${tweet.user.handle}</span>
     </header>
     <p>
       ${escape(tweet.content.text)}
@@ -41,7 +41,7 @@ const createTweetElement = function(tweet) {
 };
 
 // loop through the collection of tweets and render each tweet
-const renderTweets = function(tweets) {
+const renderTweets = function (tweets) {
   $(".new-tweet-container").empty(); //empty the .new-tweet-container
   tweets.forEach((tweet) => {
     //refille the .new-tweet-container in chronological order - new to old
@@ -118,7 +118,7 @@ const validateFormData = (formData) => {
 };
 
 //when document is loaded
-$(document).ready(function() {
+$(document).ready(function () {
   //clear textarea on refresh
   $("#submit-tweet").find("input[type=text], textarea").val("");
 
@@ -126,7 +126,7 @@ $(document).ready(function() {
   loadTweets();
 
   //listen for new tweet submission from form and add to db
-  $("#submit-tweet").on("submit", function(event) {
+  $("#submit-tweet").on("submit", function (event) {
     event.preventDefault();
 
     // if error message is showing then slideUp element
